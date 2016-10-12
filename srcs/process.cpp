@@ -10,24 +10,45 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <expertsystem.h>
+#include "expertsystem.h"
 
-bool	check_line(std::string line)
+void split(const string &str, char delim, vector<string> &elems)  
+{                                                                                
+	stringstream   ss;                                                      
+	string         item;                                                    
+
+	ss.str(str);                                                                 
+	while (getline(ss, item, delim))                                             
+	{                                                                            
+		if (!item.empty())                                                       
+			elems.push_back(item);                                               
+	}                                                                            
+}                                                                                
+
+vector<string>    strsplit(string &s, char delim)                 
+{                                                                                
+	vector<string> elem;                                               
+
+	split(s, delim, elem);                                                       
+	return (elem);                                                               
+}                  
+
+bool	check_line(string line)
 {
-	std::vector<std::string> split;
-	std::regex char_regex("\\!?[A-Z]");
-	std::regex op_regex("[+\\|^]");
-	std::regex imp_regex("(=>)|(<=>)");
-	std::regex qry_regex("((\\=)|(\\?))?[A-Z]+");
+	vector<string> split;
+
+	regex char_regex("\\!?[A-Z]");
+	regex op_regex("[+\\|^]");
+	regex imp_regex("(=>)|(<=>)");
+	regex qry_regex("((\\=)|(\\?))?[A-Z]+");
 
 	split = strsplit(line, ' ');
 	for (size_t j = 0; j < split.size(); j++)
 	{
-		if (!(std::regex_match(split[j], qry_regex) || 
-			std::regex_match(split[j], qry_regex) ||
-			std::regex_match(split[j], char_regex) || 
-			std::regex_match(split[j], op_regex) ||
-			std::regex_match(split[j], imp_regex)))
+		if (!(regex_match(split[j], qry_regex) || regex_match(split[j], qry_regex) || 
+		regex_match(split[j], char_regex) || 
+		regex_match(split[j], op_regex) || 
+		regex_match(split[j], imp_regex)))
 		{
 			return (false);
 		}
@@ -35,13 +56,13 @@ bool	check_line(std::string line)
 	return (true);
 }
 
-void	process(std::vector<std::string> lines)
+void	process(t_info *info)
 {
-	for (size_t i = 0; i < lines.size(); i++)
+	for (size_t i = 0; i < info->data.size(); i++)
 	{
-		if (!check_line(lines[i]))
+		if (!check_line(info->data[i]))
 		{
-			std::cout << "Line " << i + 1 << ": Syntax Error!" << std::endl;
+			cout << "Line " << i + 1 << ": Syntax Error!" << endl;
 			return ;
 		}
 	}

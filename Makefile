@@ -13,12 +13,12 @@
 NAME=ExpertSystem
 
 CC= g++
-CFLAGS= -Wall -Werror -Wextra
+CFLAGS= -Wall -Werror -Wextra -std=c++11
 HEADERS= -I ./include
 
 SP= ./srcs/
 
-SRC= $(SP)main.cpp $(SP)process.cpp $(SP)strsplit.cpp
+SRC= $(SP)main.cpp $(SP)save_data.cpp $(SP)process.cpp
 
 all: $(NAME)
 

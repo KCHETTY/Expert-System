@@ -20,7 +20,16 @@
 # include <vector>
 # include <regex>
 
-void	process(std::vector<std::string> lines);
-std::vector<std::string> strsplit(std::string &s, char delim);
+using namespace std;
+
+typedef struct		s_info
+{
+	vector<string>	data;
+}					t_info;
+
+int		save_data(t_info *info, string file);
+
+void	process(t_info *info);
+//std::vector<std::string> strsplit(std::string &s, char delim);
 
 #endif

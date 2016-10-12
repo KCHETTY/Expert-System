@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 14:25:51 by oexall            #+#    #+#             */
-/*   Updated: 2016/09/28 08:17:07 by oexall           ###   ########.fr       */
+/*   Updated: 2016/10/12 09:16:09 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ bool	check_line(string line)
 	split = strsplit(line, ' ');
 	for (size_t j = 0; j < split.size(); j++)
 	{
-		if (!(regex_match(split[j], qry_regex) || regex_match(split[j], qry_regex) || 
-		regex_match(split[j], char_regex) || 
-		regex_match(split[j], op_regex) || 
-		regex_match(split[j], imp_regex)))
+		if (!(regex_match(split[j], qry_regex) || regex_match(split[j], qry_regex) ||regex_match(split[j], char_regex) || regex_match(split[j], op_regex) || regex_match(split[j], imp_regex)))
 		{
 			return (false);
 		}
@@ -56,14 +53,16 @@ bool	check_line(string line)
 	return (true);
 }
 
-void	process(t_info *info)
+bool	process(t_info *info)
 {
 	for (size_t i = 0; i < info->data.size(); i++)
 	{
 		if (!check_line(info->data[i]))
 		{
 			cout << "Line " << i + 1 << ": Syntax Error!" << endl;
-			return ;
+			return (false);
 		}
 	}
+
+	return (true);
 }

@@ -22,13 +22,14 @@ static inline void trim(string &s)
 	rtrim(s);                                                                    
 } 
 
-int	save_data(t_info *info, string file)
+bool	save_data(t_info *info, string file)
 {
 	cout << file << endl;
 
-	string	line;
-	int		i;
-	ifstream input(file);
+	string		line;
+	int			i;
+	bool		conf = false;
+	ifstream	input(file);
 
 	i = 0;
 	while (getline(input, line).good())                                      
@@ -43,10 +44,11 @@ int	save_data(t_info *info, string file)
 			continue;                                                        
 		info->data.push_back(line);                                               
 	}                                                                        
-	input.close();                                                              
+	input.close();
 	
+	conf = process(info);
 	//DEBUG                                                                      
 	for (size_t i = 0; i < info->data.size(); i++)                                    
 		cout << "L: " << info->data[i] << endl;                             
-	return (1);  
+	return (conf);  
 }

@@ -9,10 +9,10 @@ int		main(int argc, char **argv)
 		cout << "Invalid Parameters!" << endl;
 	else
 	{
-		if (save_data(&info, argv[1]))
+		if (save_data(&info, argv[1]) == true)
 		{
 			cout << "HELLO CHODE!!!" << endl;
-			process(&info);
+			parse_data(&info);
 		}
 		else
 			cout << "Syntax Error!" << endl;

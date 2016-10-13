@@ -22,23 +22,16 @@
 
 using namespace std;
 
-typedef struct		s_components
-{
-	char			*letter;
-	bool			conf;
-	struct			*next;
-}					t_components
-
 typedef struct		s_info
 {
 	vector<string>	data;
 	vector<string>  component;
 	vector<string>	next;
-	t_components	*comp;
+	vector<char>	queries;
+	vector<char>	defines;
 }					t_info;
 
 bool	save_data(t_info *info, string file);
-void	parse_data(t_info *info);
 bool	process(t_info *info);
 //std::vector<std::string> strsplit(std::string &s, char delim);
 

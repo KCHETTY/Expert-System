@@ -12,7 +12,6 @@ int		main(int argc, char **argv)
 		if (save_data(&info, argv[1]) == true)
 		{
 			cout << "HELLO CHODE!!!" << endl;
-			parse_data(&info);
 		}
 		else
 			cout << "Syntax Error!" << endl;

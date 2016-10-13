@@ -18,7 +18,7 @@ HEADERS= -I ./include
 
 SP= ./srcs/
 
-SRC= $(SP)main.cpp $(SP)save_data.cpp $(SP)process.cpp
+SRC= $(SP)main.cpp $(SP)save_data.cpp $(SP)process.cpp $(SP)solve_queries.cpp
 
 all: $(NAME)
 

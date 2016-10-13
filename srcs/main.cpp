@@ -12,9 +12,8 @@ int		main(int argc, char **argv)
 		if (save_data(&info, argv[1]) == true)
 		{
 			cout << "HELLO CHODE!!!" << endl;
+			solve_queries(&info);
 		}
-		else
-			cout << "Syntax Error!" << endl;
 	}
 	return (0);
 }

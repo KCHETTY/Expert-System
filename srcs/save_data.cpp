@@ -65,7 +65,6 @@ bool	save_data(t_info *info, string file)
 		if (line[0] == '#' || line.empty())                                  
 			continue;
 		i = line.find("#", 0);	
-		cout << i << endl;
 		if (i > 0)	
 			line.erase(line.find("#", 0), line.length());	
 		trim(line);                                                          
@@ -84,12 +83,11 @@ bool	save_data(t_info *info, string file)
 	for (size_t k = 0; k < info->data.size(); k++)                                    
 		cout << "L: " << info->data[k] << endl;
 
+	cout << endl;
 	for (size_t j = 0; j < info->defines.size(); j++)
-	{
-		cout << "chode" << endl;
 		cout << info->defines[j] << endl;
-	}
 
+	cout << endl;
 	for (size_t u = 0; u < info->queries.size(); u++)
 		cout << info->queries[u] << endl;
 

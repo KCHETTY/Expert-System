@@ -24,6 +24,7 @@ using namespace std;
 
 typedef struct		s_info
 {
+	int				values[26];
 	vector<string>	data;
 	vector<string>  component;
 	vector<string>	next;
@@ -33,6 +34,7 @@ typedef struct		s_info
 
 bool	save_data(t_info *info, string file);
 bool	process(t_info *info);
+void	solve_queries(t_info *info);
 //std::vector<std::string> strsplit(std::string &s, char delim);
 
 #endif

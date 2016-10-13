@@ -26,18 +26,28 @@ void	save_defines(t_info *info, string line, int check)
 {
 	int i, j, k;
 
-	i = -1;
+	i = 0;
 	if (((k = line.find("=>")) == -1) && ((j = line.find("<=>")) == -1))
 	{
 		if (check == 1)
+			info->defines.push_back(line[0]);
+		if (check == 2)
+			info->queries.push_back(line[0]);
+		if (check == 1)
 		{
 			while(line[++i])
-				info->defines.push_back(line[i]);			
+			{
+				if (isalpha(line[i]))
+					info->defines.push_back(line[i]);		
+			}
 		}
 		else if (check == 2)
 		{
 			while(line[++i])
-				info->queries.push_back(line[i]);
+			{
+				if (isalpha(line[i]))
+					info->queries.push_back(line[i]);
+			}
 		}
 	}
 }

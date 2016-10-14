@@ -7,7 +7,7 @@ void	initialize_data(t_info *info)
 	int i;
 
 	for (size_t o = 0; o < 26; o++)                                                 
-	        info->values[o] = 0; 
+		info->values[o] = 0; 
 
 	for (size_t arr = 1; arr < info->defines.size(); arr++)
 	{
@@ -26,10 +26,15 @@ void	initialize_data(t_info *info)
 
 }
 
+void	solve_data(t_info *info)
+{
+	cout << info->queries.size() << endl;
+}
+
 void	solve_queries(t_info *info)
 {
 	initialize_data(info);
-	
+	solve_data(info);	
 	cout << endl;
 	for (size_t o = 0; o < 26; o++)
 		cout << info->values[o] << endl;

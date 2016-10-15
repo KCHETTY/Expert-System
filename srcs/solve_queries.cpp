@@ -26,9 +26,29 @@ void	initialize_data(t_info *info)
 
 }
 
+bool	solve(char query, t_info *info)
+{
+	bool	result;
+	//bool	oldresult;
+	//int		negation
+
+	result = info->values[query - 'A'];
+	cout << "second result: " << result << endl;
+	return (result);
+}
+
 void	solve_data(t_info *info)
 {
 	cout << info->queries.size() << endl;
+	size_t		i;
+	bool	result;
+	
+	result = false;
+	for (i = 1; i < info->queries.size(); i++)
+	{
+		result = solve(info->queries[i], info);
+		cout << "first result: " << result << endl;
+	}
 }
 
 void	solve_queries(t_info *info)

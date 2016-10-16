@@ -26,18 +26,6 @@ void	initialize_data(t_info *info)
 
 }
 
-/*string	remove_whitespace(string data)
-{
-	string new_data;
-
-	for (size_t i = 0; i < data.length(); i++)
-	{
-		if (data[i] != ' ' && data[i] != '\t')
-			new_data.push_back(data[i]);
-	}
-	return (new_data);
-}*/
-
 int		brackets(string rule)
 {
 	for (size_t i = 0; i < rule.length(); i++)
@@ -47,20 +35,6 @@ int		brackets(string rule)
 	}
 	return (0);
 }
-
-/*string 	getsub(string rule, size_t *start, size_t *count)
-{
-	*count = 3;
-	if (rule[*start + 2] == '!')
-		*count += 1;
-	if (rule[*start - 1] == '!')
-	{
-		*start -= 1;
-		*count += 1;
-	}
-	string test = rule.substr(*start, *count);
-	return (rule.substr(*start, *count));
-}*/
 
 string	brackets3(string rule, t_info *info)
 {
@@ -93,32 +67,6 @@ string	brackets3(string rule, t_info *info)
 	rule.replace(start, count , val);
 	return (rule);
 }
-
-/*bool get_var_value(char op, t_info *info)
-{
-	char test;
-
-	
-	if (op == '1')
-		return (true);
-	if (op == '0')
-		return (false);
-	for (size_t i = 0; i < 26; i++)
-	{
-		test = i + 'A';
-		if (test == op)
-		{
-			return (info->values[i]);		
-		}
-	}
-	cout << "error: no value found" << endl;
-	return (false);
-}
-
-bool	isop(char c)
-{
-	return (c == '+' || c == '|' || c == '^');
-}*/
 
 int	brackets4(string data, t_info *info)
 {
@@ -176,23 +124,6 @@ int	brackets4(string data, t_info *info)
 			return (false);
 	}
 }
-
-/*int		ops(string rule)
-{
-	size_t count;
-	size_t i;
-	count = 0; 
-	i = 0;
-
-	while (i < rule.length())
-	{
-		if (isop(rule[i]))
-			count++;
-		i++;	
-	}
-
-	return (count);
-}*/
 
 string	brackets2(string rule, t_info *info)
 {

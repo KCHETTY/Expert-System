@@ -3,15 +3,18 @@
 
 void	get_rules(t_info *info)
 {
-	int k, l, j, o;
+	int	q_mark;
+	int	equal;
+	int	implies;
+	int	w_implies;
 
 	for (size_t i = 0; i < info->data.size(); i++)
 	{	
-		k = info->data[i].find("?", 0);
-		l = info->data[i].find("=", 0);
-		j = info->data[i].find("=>");
-		o = info->data[i].find("<=>");
-		if ((k == -1 || l == -1) && (j != -1 || o != -1))
+		q_mark = info->data[i].find("?", 0);
+		equal = info->data[i].find("=", 0);
+		implies = info->data[i].find("=>");
+		w_implies= info->data[i].find("<=>");
+		if ((q_mark == -1 || equal == -1) && (implies != -1 || w_implies != -1))
 			info->rules.push_back(info->data[i]);
 	}
 }

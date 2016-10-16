@@ -26,7 +26,7 @@ void	initialize_data(t_info *info)
 
 }
 
-string	remove_whitespace(string data)
+/*string	remove_whitespace(string data)
 {
 	string new_data;
 
@@ -36,7 +36,7 @@ string	remove_whitespace(string data)
 			new_data.push_back(data[i]);
 	}
 	return (new_data);
-}
+}*/
 
 int		brackets(string rule)
 {
@@ -48,7 +48,7 @@ int		brackets(string rule)
 	return (0);
 }
 
-string 	getsub(string rule, size_t *start, size_t *count)
+/*string 	getsub(string rule, size_t *start, size_t *count)
 {
 	*count = 3;
 	if (rule[*start + 2] == '!')
@@ -60,7 +60,7 @@ string 	getsub(string rule, size_t *start, size_t *count)
 	}
 	string test = rule.substr(*start, *count);
 	return (rule.substr(*start, *count));
-}
+}*/
 
 string	brackets3(string rule, t_info *info)
 {
@@ -94,7 +94,7 @@ string	brackets3(string rule, t_info *info)
 	return (rule);
 }
 
-bool get_var_value(char op, t_info *info)
+/*bool get_var_value(char op, t_info *info)
 {
 	char test;
 
@@ -118,7 +118,7 @@ bool get_var_value(char op, t_info *info)
 bool	isop(char c)
 {
 	return (c == '+' || c == '|' || c == '^');
-}
+}*/
 
 int	brackets4(string data, t_info *info)
 {
@@ -177,7 +177,7 @@ int	brackets4(string data, t_info *info)
 	}
 }
 
-int		ops(string rule)
+/*int		ops(string rule)
 {
 	size_t count;
 	size_t i;
@@ -192,14 +192,12 @@ int		ops(string rule)
 	}
 
 	return (count);
-}
-
+}*/
 
 string	brackets2(string rule, t_info *info)
 {
 	size_t start;
 	size_t end;
-//	size_t len;
 	string temp;
 
 	start = rule.rfind("(");
@@ -226,7 +224,6 @@ bool	solve1(string rule, t_info *info)
 	{	
 		rule = brackets2(rule, info);
 	}
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	while (ops(rule) > 0)
 	{
 		rule = brackets3(rule, info);
@@ -234,7 +231,6 @@ bool	solve1(string rule, t_info *info)
 	if (rule[0] != '0' && rule[1] != '1')
 		rule = (brackets4(rule, info)) ? '1' : '0';
 	return (rule[0] == '1');
-	//return (rule);
 }
 
 void	find_query(t_info *info, bool result, string rule)
@@ -273,11 +269,8 @@ bool	solve(char query, t_info *info)
 {
 	bool	result;
 	bool	oldresult;
-	//int		negation
 
-	result = info->values[query - 'A'];
-		
-	cout << "//////////////////////////////////////Query////////////////////////  " << query << endl;
+	result = info->values[query - 'A'];		
 	oldresult = result;
 	for (size_t i = 0; i < info->rules.size(); i++)
 	{
@@ -290,17 +283,10 @@ bool	solve(char query, t_info *info)
 void	solve_data(t_info *info)
 {
 	size_t		i;
-	//bool	result;
 	
-	//result = false;
 	for (i = 1; i < info->queries.size(); i++)
 	{
-		//result = 
 		solve(info->queries[i], info);
-		/*if (result == true)
-			cout << info->queries[i] << " is true!!" << endl;
-		else if (result == false)	
-			cout << info->queries[i] << " is false!!" << endl;*/
 	}	
 }
 

@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 14:16:15 by oexall            #+#    #+#             */
-/*   Updated: 2016/10/16 08:49:44 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/10/16 14:23:05 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ bool	save_data(t_info *info, string file);
 bool	process(t_info *info);
 void	solve_queries(t_info *info);
 int		brackets4(string data, t_info *info);
-//std::vector<std::string> strsplit(std::string &s, char delim);
-
+string	remove_whitespace(string data);
+string  getsub(string rule, size_t *start, size_t *count);
+int     ops(string rule);
+bool 	get_var_value(char op, t_info *info);
+bool    isop(char c);
 #endif

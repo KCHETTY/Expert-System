@@ -29,7 +29,6 @@ int		main(int argc, char **argv)
 	{
 		if (save_data(&info, argv[1]) == true)
 		{
-			cout << "HELLO CHODE!!!" << endl;
 			get_rules(&info);
 			for (size_t i = 0; i < info.rules.size(); i++)
 				cout << info.rules[i] << endl;

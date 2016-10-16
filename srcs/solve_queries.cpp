@@ -90,8 +90,6 @@ string	brackets3(string rule, t_info *info)
 	else
 		return (rule);
 	val = (brackets4(sub, info)) ? "1" : "0";
-
-	cout << "lets see what that val is   " << val << endl;
 	rule.replace(start, count , val);
 	return (rule);
 }
@@ -105,13 +103,11 @@ bool get_var_value(char op, t_info *info)
 		return (true);
 	if (op == '0')
 		return (false);
-	cout << "CHAR______ " << op << endl;
 	for (size_t i = 0; i < 26; i++)
 	{
 		test = i + 'A';
 		if (test == op)
 		{
-			cout << "INFO VALUES____ " << info->values[i] << endl;
 			return (info->values[i]);		
 		}
 	}
@@ -127,7 +123,6 @@ bool	isop(char c)
 int	brackets4(string data, t_info *info)
 {
 	
-	cout << "rule-replace  " << data << endl;
 	bool v1;
 	bool n1 = false;
 	bool v2;
@@ -156,7 +151,6 @@ int	brackets4(string data, t_info *info)
 		cout << "error" << endl;
 	op = data[i++];
 
-	cout << "op AFTER HERE   " << op << endl;
 	if (data[i] == '!')
 	{
 		n2 = true;
@@ -187,7 +181,6 @@ int		ops(string rule)
 	count = 0; 
 	i = 0;
 
-	cout << "TESDSDSDDSDS " << rule << endl;
 	while (i < rule.length())
 	{
 		if (isop(rule[i]))
@@ -195,7 +188,6 @@ int		ops(string rule)
 		i++;	
 	}
 
-	cout << "======> " << count << endl;
 	return (count);
 }
 
@@ -227,7 +219,6 @@ string	brackets2(string rule, t_info *info)
 bool	solve1(string rule, t_info *info)
 {
 	rule = remove_whitespace(rule);
-	cout << "SOLVE_1111 " << rule << endl;
 	while (brackets(rule))
 	{	
 		rule = brackets2(rule, info);
@@ -235,12 +226,10 @@ bool	solve1(string rule, t_info *info)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	while (ops(rule) > 0)
 	{
-		cout << "UUUUUBBBBBBEREEEEERRRR " << rule << endl;
 		rule = brackets3(rule, info);
 	}
 	if (rule[0] != '0' && rule[1] != '1')
 		rule = (brackets4(rule, info)) ? '1' : '0';
-	cout << "LETS CHECK IT SON___" << rule << endl;
 	return (rule[0] == '1');
 	//return (rule);
 }

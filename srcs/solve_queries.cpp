@@ -261,11 +261,11 @@ void	find_query(t_info *info, bool result, string rule)
 
 	for (size_t b = 0; b < rule.size(); b++)
 	{
+		val = rule[b] - 'A';
 		if (isalpha(rule[b]))
-		{
-			val = rule[b] - 'A';
 			info->values[val] = result;
-		}
+		if (rule[b] == '!' && isalpha(rule[++b]))
+			info->values[val] = !result;
 	}
 }
 

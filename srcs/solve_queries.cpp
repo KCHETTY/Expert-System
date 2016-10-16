@@ -122,7 +122,8 @@ bool	isop(char c)
 
 int	brackets4(string data, t_info *info)
 {
-	
+	cout << data << endl;
+		
 	bool v1;
 	bool n1 = false;
 	bool v2;
@@ -135,6 +136,8 @@ int	brackets4(string data, t_info *info)
 	if (data.length() == 1)
 		return (get_var_value(data[0], info));
 	if (data.length() == 2 && data[0] == '!')
+		return (!get_var_value(data[1], info));
+	if (data[0] == '!' && isalpha(data[1]) != 0 && (data[2] == '=' || data[2] == '<'))
 		return (!get_var_value(data[1], info));
 	if (data[0] == '1')
 		return (1);
@@ -250,6 +253,11 @@ bool	find_query(char query, string rule)
 		return (false);
 }
 
+//void	update_values(t_info *info)
+//{
+	
+//}
+
 bool	solve(char query, t_info *info)
 {
 	bool	result;
@@ -265,6 +273,10 @@ bool	solve(char query, t_info *info)
 		result = solve1(info->rules[i], info);
 		if (find_query(query, info->rules[i]) == true)
 			oldresult = result;
+		//else
+		//{
+		//	update_values(info);
+		//}
 	}
 	return (oldresult);
 }

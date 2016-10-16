@@ -28,6 +28,7 @@ typedef struct		s_info
 	vector<string>	data;
 	vector<string>  component;
 	vector<string>	next;
+	vector<string>	rules;
 	vector<char>	queries;
 	vector<char>	defines;
 }					t_info;
@@ -35,6 +36,7 @@ typedef struct		s_info
 bool	save_data(t_info *info, string file);
 bool	process(t_info *info);
 void	solve_queries(t_info *info);
+int		brackets4(string data, t_info *info);
 //std::vector<std::string> strsplit(std::string &s, char delim);
 
 #endif

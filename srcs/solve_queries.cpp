@@ -237,26 +237,37 @@ bool	solve1(string rule, t_info *info)
 	//return (rule);
 }
 
-bool	find_query(char query, string rule)
+void	find_query(t_info *info, bool result, string rule)
 {
+	rule = remove_whitespace(rule);
 	int h = rule.find("=>");
 	int j = rule.find("<=>");
-	int i = 0;
-	if 	(h != -1)
-		 i = rule.find(query, h);
+	int val = 0;
+
+	cout << "BOOL " << result << endl;
+	cout << info->values[1] << endl;
+	if (h != -1)
+	{
+		rule = rule.substr(h);
+		h = rule.find('>') + 1;
+		rule = rule.substr(h);
+	}
 	else if (j != -1)
-		i = rule.find(query, j);
+	{
+		rule = rule.substr(j);
+		j = rule.find('>') + 1;
+		rule = rule.substr(j);
+	}
 
-	if (i != -1)
-		return (true);
-	else
-		return (false);
+	for (size_t b = 0; b < rule.size(); b++)
+	{
+		if (isalpha(rule[b]))
+		{
+			val = rule[b] - 'A';
+			info->values[val] = result;
+		}
+	}
 }
-
-//void	update_values(t_info *info)
-//{
-	
-//}
 
 bool	solve(char query, t_info *info)
 {
@@ -271,12 +282,7 @@ bool	solve(char query, t_info *info)
 	for (size_t i = 0; i < info->rules.size(); i++)
 	{
 		result = solve1(info->rules[i], info);
-		if (find_query(query, info->rules[i]) == true)
-			oldresult = result;
-		//else
-		//{
-		//	update_values(info);
-		//}
+		find_query(info, result, info->rules[i]);
 	}
 	return (oldresult);
 }
@@ -284,23 +290,33 @@ bool	solve(char query, t_info *info)
 void	solve_data(t_info *info)
 {
 	size_t		i;
-	bool	result;
+	//bool	result;
 	
-	result = false;
+	//result = false;
 	for (i = 1; i < info->queries.size(); i++)
 	{
-		result = solve(info->queries[i], info);
-		if (result == true)
+		//result = 
+		solve(info->queries[i], info);
+		/*if (result == true)
 			cout << info->queries[i] << " is true!!" << endl;
 		else if (result == false)	
-			cout << info->queries[i] << " is false!!" << endl;
+			cout << info->queries[i] << " is false!!" << endl;*/
 	}	
 }
 
 void	solve_queries(t_info *info)
 {
+	int val = 0;
 	initialize_data(info);
-	solve_data(info);	
+	solve_data(info);
+	for (size_t p = 1; p < info->queries.size(); p++)
+	{
+		val = info->queries[p] - 'A';
+		if (info->values[val] == false)
+			cout << info->queries[p] << " is false..." << endl;
+		else if (info->values[val] == true)
+			cout << info->queries[p] << " is true..." << endl;
+	}
 	cout << endl;
 	for (size_t o = 0; o < 26; o++)
 		cout << info->values[o] << endl;
